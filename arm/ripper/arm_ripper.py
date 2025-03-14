@@ -64,7 +64,10 @@ def rip_visual_media(have_dupes, job, logfile, protection):
             db.session.commit()
             sys.exit()
         if job.config.NOTIFY_RIP:
-            utils.notify(job, constants.NOTIFY_TITLE, f"{job.title} rip complete. Starting transcode. ")
+            if job.config.SKIP_TRANSCODE:
+              utils.notify(job, constants.NOTIFY_TITLE, f"{job.title} rip complete. Skipping transcode. ")
+            else:
+              utils.notify(job, constants.NOTIFY_TITLE, f"{job.title} rip complete. Starting transcode. ")
         logging.info("************* Ripping with MakeMKV completed *************")
         # point HB to the path MakeMKV ripped to
         hb_in_path = makemkv_out_path
