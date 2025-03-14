@@ -63,6 +63,7 @@ def upgrade():
                     sa.Column('VIDEOTYPE', sa.String(length=25), nullable=True),
                     sa.Column('MINLENGTH', sa.String(length=6), nullable=True),
                     sa.Column('MAXLENGTH', sa.String(length=6), nullable=True),
+                    sa.Column('MAXTRACKS', sa.String(length=3), nullable=True),
                     sa.Column('MANUAL_WAIT', sa.Boolean(), nullable=True),
                     sa.Column('MANUAL_WAIT_TIME', sa.Integer(), nullable=True),
                     sa.Column('ARMPATH', sa.String(length=255), nullable=True),

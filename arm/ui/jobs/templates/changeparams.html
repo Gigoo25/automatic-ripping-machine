@@ -88,6 +88,16 @@
                             Title can't be blank
                         </div>
                     </div>
+
+                    <div class="input-group mb-3 flex-nowrap">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">{{ form.MAXTRACKS.label }}</span>
+                        </div>
+                        {{ form.MAXTRACKS }}
+                        <div id="MAXTRACKS_INVALID" class="invalid-tooltip">
+                            Title can't be blank
+                        </div>
+                    </div>
                     <input name="mode" value="change_job_params" hidden>
                     <input name="config_id" value="{{ config.CONFIG_ID }}" hidden>
                     <button class="btn btn-info btn-lg btn-block" type="submit">Submit</button>

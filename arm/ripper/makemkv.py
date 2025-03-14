@@ -271,6 +271,15 @@ def get_track_info(mdisc, job):
             # Total track count
             if msg_type == "TCOUNT":
                 logging.info(f"Found {line_split[1].strip()} titles")
+                # Check if the track count exceeds the configured maximum
+                if int(job.config.MAXTRACKS) > 0 and int(line_split[1].strip()) > int(job.config.MAXTRACKS):
+                    error_message = (
+                        f"More than {job.config.MAXTRACKS} tracks found, "
+                        "this is likely obfuscation measures. Exiting"
+                    )
+                    logging.error(error_message)
+                    notify(job, "ARM Error", error_message)
+                    raise ValueError(error_message)
                 utils.database_updater({'no_of_titles': int(line_split[1].strip())}, job)
             # Title info add track and get filename
             if msg_type == "TINFO":

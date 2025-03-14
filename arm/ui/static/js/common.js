@@ -55,7 +55,7 @@ function transcodingCheck(job) {
     if (job.status === "transcoding" && job.stage !== "" && job.progress || job.disctype === "music" && job.stage !== "") {
         x += `<div id="jobId${job.job_id}_stage"><strong>Stage: </strong>${job.stage}</div>`;
         x += `<div id="jobId${job.job_id}_progress" >`;
-        x += `<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
+        x += `<div class="progress"><div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
               aria-valuenow="${job.progress_round}" aria-valuemin="0" aria-valuemax="100" style="width: ${job.progress_round}%">
               <small class="justify-content-center d-flex position-absolute w-100">${job.progress}%</small></div></div></div>
               <div id="jobId${job.job_id}_eta"><strong>ETA: </strong>${job.eta}</div>`;
@@ -112,7 +112,7 @@ function buildMiddleSection(job) {
     x += `<div id="jobId${job.job_id}_year"><strong>Year: </strong>${job.year}</div>`;
     x += `<div id="jobId${job.job_id}_video_type"><strong>Type: </strong>${job.video_type}</div>`;
     x += `<div id="jobId${job.job_id}_devpath"><strong>Device: </strong>${job.devpath}</div>`;
-    x += `<div><strong>Status: </strong><img id="jobId${job.job_id}_status" 
+    x += `<div><strong>Status: </strong><img id="jobId${job.job_id}_status"
                                src="static/img/${job.status}.png" height="20px" alt="${job.status}" title="${job.status}"></div>`;
     x += `<div id="jobId${job.job_id}_progress_section">${transcodingCheck(job)}</div></div></div>`;
     return x;
@@ -135,17 +135,18 @@ function buildRightSection(job, idsplit, authenticated) {
     x += `<div id="jobId${job.job_id}_MAINFEATURE"><strong>Main Feature: </strong>${job.config.MAINFEATURE}</div>`;
     x += `<div id="jobId${job.job_id}_MINLENGTH"><strong>Min Length: </strong>${job.config.MINLENGTH}</div>`;
     x += `<div id="jobId${job.job_id}_MAXLENGTH"><strong>Max Length: </strong>${job.config.MAXLENGTH}</div>`;
+    x += `<div id="jobId${job.job_id}_MAXTRACKS"><strong>Max Tracks: </strong>${job.config.MAXTRACKS}</div>`;
     x += "</div>";
     // Section 3 (Right Bottom) Contains Buttons for arm json api
     // Only show when authenticated
     x += `<div class="card-body px-2 py-1">`;
     if (authenticated === true) {
         x += `<div class="btn-group-vertical" role="group" aria-label="buttons" ${idsplit[0] !== "0" ? "style=\"display: none;\"" : ""}>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-type="abandon" data-jobid="${idsplit[1]}" 
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-type="abandon" data-jobid="${idsplit[1]}"
               data-href="json?job=${idsplit[1]}&mode=abandon">Abandon Job</button>
               <a href="logs?logfile=${job.logfile}&mode=full" class="btn btn-primary">View logfile</a>`;
         x += musicCheck(job, idsplit);
-        x += `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-type="fixperms" 
+        x += `<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-type="fixperms"
               data-jobid="${idsplit[1]}" data-href="json?mode=fixperms&job=${idsplit[1]}">Fix Permissions</button>`;
         x += `</div>`;
     }

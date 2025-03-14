@@ -25,6 +25,7 @@ class ChangeParamsForm(FlaskForm):
     MAINFEATURE = BooleanField('Main Feature: ')
     MINLENGTH = IntegerField('Minimum Length: ')
     MAXLENGTH = IntegerField('Maximum Length: ')
+    MAXTRACKS = IntegerField('Maximum Tracks: ')
     submit = SubmitField('Submit')
 
 

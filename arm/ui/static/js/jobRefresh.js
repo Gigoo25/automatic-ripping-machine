@@ -59,8 +59,8 @@ $(document).ready(function () {
  * @param    {Class} oldJob    Copy of old job
  */
 function updateProgress(job, oldJob) {
-    const subProgressBar = `<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" 
-                             aria-valuenow="${job.progress_round}" aria-valuemin="0" aria-valuemax="100" 
+    const subProgressBar = `<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                             aria-valuenow="${job.progress_round}" aria-valuemin="0" aria-valuemax="100"
                              style="width: ${job.progress_round}%">
                              <small class="justify-content-center d-flex position-absolute w-100">${job.progress}%</small></div></div>`;
     const mainProgressBar = `<div id="jobId${job.job_id}_stage"><b>Stage: </b>${job.stage}</div>
@@ -161,6 +161,7 @@ function updateJobItem(oldJob, job) {
     updateContents($(`#jobId${job.job_id}_MAINFEATURE`), job, "Main Feature", job.config.MAINFEATURE);
     updateContents($(`#jobId${job.job_id}_MINLENGTH`), job, "Min Length", job.config.MINLENGTH);
     updateContents($(`#jobId${job.job_id}_MAXLENGTH`), job, "Max Length", job.config.MAXLENGTH);
+    updateContents($(`#jobId${job.job_id}_MAXTRACKS`), job, "Max Tracks", job.config.MAXTRACKS);
 }
 
 /**

@@ -437,12 +437,13 @@ def change_job_params(config_id):
         job.disctype = format(form.DISCTYPE.data)
         cfg.arm_config["MINLENGTH"] = config.MINLENGTH = format(form.MINLENGTH.data)
         cfg.arm_config["MAXLENGTH"] = config.MAXLENGTH = format(form.MAXLENGTH.data)
+        cfg.arm_config["MAXTRACKS"] = config.MAXTRACKS = format(form.MAXTRACKS.data)
         cfg.arm_config["RIPMETHOD"] = config.RIPMETHOD = format(form.RIPMETHOD.data)
         # must be 1 for True 0 for False
         cfg.arm_config["MAINFEATURE"] = config.MAINFEATURE = 1 if format(form.MAINFEATURE.data).lower() == "true" else 0
         args = {'disctype': job.disctype}
         message = f'Parameters changed. Rip Method={config.RIPMETHOD}, Main Feature={config.MAINFEATURE},' \
-                  f'Minimum Length={config.MINLENGTH}, Maximum Length={config.MAXLENGTH}, Disctype={job.disctype}'
+                  f'Minimum Length={config.MINLENGTH}, Maximum Length={config.MAXLENGTH}, Maximum Tracks={config.MAXTRACKS}, Disctype={job.disctype}'
         # We don't need to set the config as they are set with job commit
         notification = Notifications(f"Job: {job.job_id} Config updated!", message)
         db.session.add(notification)
